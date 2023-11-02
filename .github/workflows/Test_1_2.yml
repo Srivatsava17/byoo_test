@@ -1,21 +1,25 @@
-'on':
+on:
   push:
     branches:
-    - main
+      - main
+
 jobs:
   Development:
     runs-on: self-hosted
-    tags: dev
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Copy to Airflow
-      run: 'sudo cp -r /home/ec2-user dag.py '
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Copy to Airflow
+        run: sudo cp -r /home/ec2-user dag.py
+    env:
+      TAG: dev
+
   QA:
     runs-on: self-hosted
-    tags: dev
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Copy to Airflow
-      run: 'sudo cp -r /home/ec2-user dag.py '
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Copy to Airflow
+        run: sudo cp -r /home/ec2-user dag.py
+    env:
+      TAG: qa
