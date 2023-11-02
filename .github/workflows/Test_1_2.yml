@@ -10,7 +10,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Copy to Airflow
-        run: sudo cp -r /home/ec2-user dag.py
+        run: sudo cp -r  dag.py /home/ec2-user
     env:
       TAG: dev
 
@@ -20,6 +20,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Copy to Airflow
-        run: sudo cp -r /home/ec2-user dag.py
+        run: sudo cp -r  dag.py /home/ec2-user
     env:
       TAG: qa
