@@ -1,7 +1,8 @@
-'on':
+on:
   push:
     branches:
     - main
+
 jobs:
   QA:
     runs-on: self-hosted
@@ -11,10 +12,8 @@ jobs:
     - name: Copy to Airflow
       run: sudo cp -r sample_dag.py /home/ec2-user
     env:
-      TAG: &id001
-      - Dev
-      - QA
-      - Prod
+      TAG: Dev,QA,Prod
+
   Dev:
     runs-on: self-hosted
     steps:
@@ -23,7 +22,8 @@ jobs:
     - name: Copy to Airflow
       run: sudo cp -r sample_dag.py /home/ec2-user
     env:
-      TAG: *id001
+      TAG: Dev,QA,Prod
+
   prod:
     runs-on: self-hosted
     steps:
@@ -32,4 +32,4 @@ jobs:
     - name: Copy to Airflow
       run: sudo cp -r sample_dag.py /home/ec2-user
     env:
-      TAG: *id001
+      TAG: Dev,QA,Prod
