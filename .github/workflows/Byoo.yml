@@ -1,0 +1,35 @@
+'on':
+  push:
+    branches:
+    - main
+jobs:
+  QA:
+    runs-on: self-hosted
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Copy to S3
+      run: sudo aws s3 cp dag.py s3://testinnovation2304/
+    env:
+      TAG: &id001
+      - Dev
+      - QA
+      - Prod
+  Dev:
+    runs-on: self-hosted
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Copy to S3
+      run: sudo aws s3 cp dag.py s3://testinnovation2304/
+    env:
+      TAG: *id001
+  Production:
+    runs-on: self-hosted
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Copy to S3
+      run: sudo aws s3 cp dag.py s3://testinnovation2304/
+    env:
+      TAG: *id001
