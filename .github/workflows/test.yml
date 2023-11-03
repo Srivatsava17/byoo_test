@@ -5,31 +5,28 @@ on:
 
 jobs:
   QA:
-    runs-on: [self-hosted,dev]
+    runs-on: [self-hosted,linux,x64,dev]
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Copy to Airflow
       run: sudo cp -r sample_dag.py /home/ec2-user
-    env:
-      TAG: Dev,QA,Prod
+
 
   Dev:
-    runs-on: [self-hosted,dev]
+    runs-on: [self-hosted,linux,x64,dev]
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Copy to Airflow
       run: sudo cp -r sample_dag.py /home/ec2-user
-    env:
-      TAG: Dev,QA,Prod
+   
 
   prod:
-    runs-on: [self-hosted,dev]
+    runs-on: [self-hosted,linux,x64,dev]
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Copy to Airflow
       run: sudo cp -r sample_dag.py /home/ec2-user
-    env:
-      TAG: Dev,QA,Prod
+    
